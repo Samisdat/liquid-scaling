@@ -4,7 +4,7 @@ var assert = require('chai').assert;
 var Matrix = require('../lib/matrix');
 var Color = require('../lib/color');
 
-describe('Matrix', function() {     it('can be created', function() {
+describe('Matrix', function() { it('can be created', function() {
 
     var matrix = new Matrix();
 
@@ -44,26 +44,24 @@ describe('Matrix', function() {     it('can be created', function() {
         expect(rgba.r).to.equal(r);
         expect(rgba.g).to.equal(g);
         expect(rgba.b).to.equal(b);
-        expect(rgba.a).to.equal(a);     });     it('can get/set heat', function() {
+        expect(rgba.a).to.equal(a); }); it('can get/set heat', function() {
 
-    var matrix = new Matrix(4, 3);
+            var matrix = new Matrix(4, 3);
 
-    expect(matrix.getHeat(1, 1)).to.be.undefined;
+            expect(matrix.getHeat(1, 1)).to.be.undefined;
 
-    var heat = 10;
-    matrix.setHeat(1, 1, heat);
-    expect(matrix.getHeat(1,1)).to.be.equal(heat);
+            var heat = 10;
+            matrix.setHeat(1, 1, heat);
+            expect(matrix.getHeat(1,1)).to.be.equal(heat); }); it('can check deteled and mark as deleted', function() {
 
-	});     it('can check deteled and mark as deleted', function() {
+                var matrix = new Matrix(4, 3);
 
-    var matrix = new Matrix(4, 3);
+                expect(matrix.isDeleted(1, 1)).to.be.false;
 
-    expect(matrix.isDeleted(1, 1)).to.be.false;
+                matrix.markAsDeleted(1,1);
+                expect(matrix.isDeleted(1,1)).to.be.true;
 
-    matrix.markAsDeleted(1,1);
-    expect(matrix.isDeleted(1,1)).to.be.true;
-
-});
+            });
 
     it('can sumColorChanels', function() {
 

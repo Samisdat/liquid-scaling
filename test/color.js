@@ -3,7 +3,7 @@ var assert = require('chai').assert;
 
 var Color = require('../lib/color');
 
-describe('Color', function() {     it('can be created', function() {
+describe('Color', function() { it('can be created', function() {
 
     var r = 10;
     var g = 11;
@@ -14,7 +14,7 @@ describe('Color', function() {     it('can be created', function() {
 
     expect(color).to.be.instanceof(Color);
 
-	});     it('can get/set rgba ', function() {
+	}); it('can get/set rgba ', function() {
 
     var r = 10;
     var g = 11;

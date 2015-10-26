@@ -5,8 +5,8 @@ var fs = require('fs');
 
 var Canvas = require('canvas');
 
-var Matrix = require('./matrix');
-var LiquidColor = require('./liquid-color');
+var Matrix = require('./lib/matrix');
+var LiquidColor = require('./lib/liquid-color');
 
 var getColorsFromCanvasCtx = function(ctx){
 

@@ -1,8 +1,5 @@
 'use strict';
 
-var lwip = require('lwip');
-var fs = require('fs');
-
 var Canvas = require('canvas');
 
 var Matrix = require('./lib/matrix');

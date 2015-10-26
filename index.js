@@ -1,3 +1,5 @@
+'use strict';
+
 var lwip = require('lwip');
 var fs = require('fs');
 
@@ -23,11 +25,11 @@ var getColorsFromCanvasCtx = function(ctx){
         );
     };
 
-    for (var row = 0, rows = ctx.canvas.height; row < rows;  row += 1) {
+    for (var row = 0, rows = ctx.canvas.height; row < rows; row += 1) {
 
         colors[row] = [];
 
-        for (var col = 0, cols = ctx.canvas.width; col < cols;  col += 1) {
+        for (var col = 0, cols = ctx.canvas.width; col < cols; col += 1) {
 
             colors[row].push(getPixel(col, row));
 
@@ -71,7 +73,7 @@ LiquidScaling.prototype.getHeatMap = function(){
         for (var y = 0; y < this.matrix.getHeight(); y++) {
 
             var color = parseInt(this.matrix.getHeat(y, x) / maxHeat * 255, 10);
-            setPixel(x, y, {r:color, g:color, b:color});
+            setPixel(x, y, {r: color, g: color, b: color});
         }
 
     }

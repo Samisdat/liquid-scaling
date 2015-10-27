@@ -1,0 +1,7 @@
+._*
+node_modules
+examples/scaled.jpg
+npm-debug.log
+.DS_Store
+coverage
+results.txt

@@ -173,12 +173,12 @@ describe('Matrix', function() {
     it('can getReduceHeight, request more then seams', function() {
 
         var matrix = new Matrix(colors);
-
+        matrix = matrix.flip();
         var reduced = matrix.getReduceHeight(2);
 
         expect(reduced).to.be.instanceof(Matrix);
-        expect(reduced.getWidth()).to.be.equal(5);
-        expect(reduced.getHeight()).to.be.equal(2);
+        expect(reduced.getWidth()).to.be.equal(4);
+        expect(reduced.getHeight()).to.be.equal(3);
 
     });
 
@@ -196,6 +196,50 @@ describe('Matrix', function() {
         expect(reduced.getHeight()).to.be.equal(3);
 
     });
+
+    it('can getReduced without width', function() {
+
+        var matrix = new Matrix(colors);
+
+        reduced = matrix.getReduced({
+            height:3
+        });
+
+        expect(reduced).to.be.instanceof(Matrix);
+        expect(reduced.getWidth()).to.be.equal(5);
+        expect(reduced.getHeight()).to.be.equal(3);
+
+    });
+
+    it('can getReduced without height', function() {
+
+        var matrix = new Matrix(colors);
+
+        reduced = matrix.getReduced({
+            width:4
+        });
+
+        expect(reduced).to.be.instanceof(Matrix);
+        expect(reduced.getWidth()).to.be.equal(4);
+        expect(reduced.getHeight()).to.be.equal(4);
+
+    });
+
+    it('can unreduced as requested', function() {
+
+        var matrix = new Matrix(colors);
+
+        reduced = matrix.getReduced({
+            width:5,
+            height:4
+        });
+
+        expect(reduced).to.be.instanceof(Matrix);
+        expect(reduced.getWidth()).to.be.equal(5);
+        expect(reduced.getHeight()).to.be.equal(4);
+
+    });
+
 
 });
 

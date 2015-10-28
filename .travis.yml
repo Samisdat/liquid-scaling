@@ -15,4 +15,5 @@ env:
   - CXX=g++-4.8
 before_install:
   - npm explore npm -g -- npm install node-gyp@latest
+  - npm install -g grunt-cli
 sudo: false

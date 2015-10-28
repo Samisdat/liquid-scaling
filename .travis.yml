@@ -16,4 +16,6 @@ env:
 before_install:
   - npm explore npm -g -- npm install node-gyp@latest
   - npm install -g grunt-cli
+install:
+  - npm install
 sudo: false

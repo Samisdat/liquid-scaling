@@ -21,7 +21,7 @@ img.onload = function(){
 
   var liquidScaling = new LiquidScaling(ctx);
   var heatMapCtx = liquidScaling.resize({
-      width:500
+      width:640 + 22
   });
 
   heatMapCtx.canvas.toBuffer(function(err, buf){

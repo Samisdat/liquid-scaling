@@ -13,6 +13,39 @@ describe('Pixel', function() {
 
 	});
 
+    it('can get/set rgba ', function() {
+
+        var r = 10;
+        var g = 11;
+        var b = 12;
+        var a = 255;
+
+        var pixel = new Pixel(r, g, b, a);
+
+        expect(pixel.getColor).to.be.a('function');
+        expect(pixel.setColor).to.be.a('function');
+
+        var rgba = pixel.getColor();
+        expect(rgba.r).to.equal(r);
+        expect(rgba.g).to.equal(g);
+        expect(rgba.b).to.equal(b);
+        expect(rgba.a).to.equal(a);
+
+        var r = 20;
+        var g = 21;
+        var b = 22;
+        var a = 23;
+
+        pixel.setColor(r, g, b, a);
+        var rgba = pixel.getColor();
+        expect(rgba.r).to.equal(r);
+        expect(rgba.g).to.equal(g);
+        expect(rgba.b).to.equal(b);
+        expect(rgba.a).to.equal(a);
+
+	});
+
+
     it('can get/set heat', function() {
 
         var pixel = new Pixel(10, 11, 12, 255);

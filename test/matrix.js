@@ -3,42 +3,42 @@ var assert = require('chai').assert;
 
 var Matrix = require('../lib/matrix');
 
-var LiquidColor = require('../lib/liquid-color');
+var Pixel = require('../lib/pixel');
 var Seam = require('../lib/seam');
 
 describe('Matrix', function() {
 
-    var colors = [];
+    var pixels = [];
 
     beforeEach(function() {
-        colors = [
+        pixels = [
             [
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 255, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 255, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
             ],
             [
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 255, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 255, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
             ],
             [
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 255, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 255, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
             ],
             [
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 255, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
-                new LiquidColor(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 255, 0, 255),
+                new Pixel(0, 0, 0, 255),
+                new Pixel(0, 0, 0, 255),
             ],
         ];
 
@@ -46,7 +46,7 @@ describe('Matrix', function() {
 
     it('can be created', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         expect(matrix).to.be.instanceof(Matrix);
 
@@ -54,7 +54,7 @@ describe('Matrix', function() {
 
     it('can get width/height', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         expect(matrix.getWidth()).to.be.equal(5);
         expect(matrix.getHeight()).to.be.equal(4);
@@ -63,7 +63,7 @@ describe('Matrix', function() {
 
     it('can get/set color', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         var color = matrix.getColor(0, 0);
 
@@ -76,7 +76,7 @@ describe('Matrix', function() {
 
     it('can getHeat', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
         expect(matrix.getHeat(1,1)).to.be.equal(1020);
         expect(matrix.getHeat(2,2)).to.be.equal(0);
 
@@ -84,7 +84,7 @@ describe('Matrix', function() {
 
     it('can check isDeleted and markAsDeleted', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         expect(matrix.isDeleted(1,1)).to.be.false;
 
@@ -96,7 +96,7 @@ describe('Matrix', function() {
 
     it('can getMaxHeat', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         // very clever test, but covers 100% of heatmap ;)
         expect(matrix.getMaxHeat()).to.be.equal(1020);
@@ -105,7 +105,7 @@ describe('Matrix', function() {
 
     it('can generateSeams and getSeams', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         matrix.generateSeams();
 
@@ -123,7 +123,7 @@ describe('Matrix', function() {
 
     it('can flip matrix', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         var flipped = matrix.flip();
 
@@ -133,7 +133,7 @@ describe('Matrix', function() {
 
     it('can getReduceWidth', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         matrix.generateSeams();
         var reduced = matrix.getReduceWidth(4);
@@ -146,7 +146,7 @@ describe('Matrix', function() {
 
     it('can getReduceWidth, request more then seams', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         matrix.generateSeams();
         var reduced = matrix.getReduceWidth(2);
@@ -159,7 +159,7 @@ describe('Matrix', function() {
 
     it('can getReduceHeight', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         matrix.generateSeams();
         var reduced = matrix.getReduceHeight(3);
@@ -172,7 +172,7 @@ describe('Matrix', function() {
 
     it('can getReduceHeight, request more then seams', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
         matrix = matrix.flip();
         var reduced = matrix.getReduceHeight(2);
 
@@ -184,7 +184,7 @@ describe('Matrix', function() {
 
     it('can getReduced', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         reduced = matrix.getReduced({
             width:4,
@@ -199,7 +199,7 @@ describe('Matrix', function() {
 
     it('can getReduced without width', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         reduced = matrix.getReduced({
             height:3
@@ -213,7 +213,7 @@ describe('Matrix', function() {
 
     it('can getReduced without height', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         reduced = matrix.getReduced({
             width:4
@@ -227,7 +227,7 @@ describe('Matrix', function() {
 
     it('can unreduced as requested', function() {
 
-        var matrix = new Matrix(colors);
+        var matrix = new Matrix(pixels);
 
         reduced = matrix.getReduced({
             width:5,

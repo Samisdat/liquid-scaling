@@ -133,16 +133,20 @@ LiquidScaling.prototype.resize = function(targetDimension){
         targetDimension.height = this.pixelmap.getHeight();
     }
 
-    if(targetDimension.width > this.pixelmap.getWidth() || this.pixelmap.getHeight() > targetDimension.height){
+    if(targetDimension.width > this.pixelmap.getWidth() ){
 
-            this.pixelmap = this.pixelmap.scaleUp(targetDimension);
+        while(this.pixelmap.getWidth() < targetDimension.width || this.pixelmap.getHeight() < targetDimension.height){
+
+            this.pixelmap = this.pixelmap.resize(targetDimension);
+
+        }
 
     }
     else{
 
         while(this.pixelmap.getWidth() > targetDimension.width || this.pixelmap.getHeight() > targetDimension.height){
 
-            this.pixelmap = this.pixelmap.getReduced(targetDimension);
+            this.pixelmap = this.pixelmap.resize(targetDimension);
 
         }
     }

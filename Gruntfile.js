@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-  // Add the grunt-mocha-test tasks.
-    grunt.loadNpmTasks('grunt-mocha-test');
+    require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
+    require('load-grunt-config')(grunt);
 
     grunt.initConfig({
 

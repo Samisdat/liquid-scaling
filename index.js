@@ -3,6 +3,7 @@
 var Canvas = require('canvas');
 
 var Pixelmap = require('./lib/pixelmap');
+var Transform = require('./lib/transform');
 var Pixel = require('./lib/pixel');
 
 var getColorsFromCanvasCtx = function(ctx){
@@ -144,11 +145,15 @@ LiquidScaling.prototype.resize = function(targetDimension){
     }
     else{
 
+        var transform = new Transform(this.pixelmap);
+        this.pixelmap = transform.resize(targetDimension);
+        /*
         while(this.pixelmap.getWidth() > targetDimension.width || this.pixelmap.getHeight() > targetDimension.height){
 
             this.pixelmap = this.pixelmap.resize(targetDimension);
 
-        }
+        }*/
+
     }
 
     return this.createResizedCanvas();

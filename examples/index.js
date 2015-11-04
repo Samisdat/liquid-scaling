@@ -21,6 +21,7 @@ img.onload = function(){
   ctx.drawImage(img, 0, 0, width, height);
 
   var liquidScaling = new LiquidScaling(ctx);
+ 
   var heatMapCtx = liquidScaling.resize({
       width:650,
       height:460

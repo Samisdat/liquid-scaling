@@ -135,12 +135,16 @@ LiquidScaling.prototype.resize = function(targetDimension){
     }
 
     if(targetDimension.width > this.pixelmap.getWidth() ){
+        var transform = new Transform(this.pixelmap);
+        this.pixelmap = transform.resize(targetDimension);
 
+        /**
         while(this.pixelmap.getWidth() < targetDimension.width || this.pixelmap.getHeight() < targetDimension.height){
 
             this.pixelmap = this.pixelmap.resize(targetDimension);
 
         }
+        */
 
     }
     else{

@@ -21,10 +21,10 @@ img.onload = function(){
   ctx.drawImage(img, 0, 0, width, height);
 
   var liquidScaling = new LiquidScaling(ctx);
- 
+
   var heatMapCtx = liquidScaling.resize({
       width:650,
-      height:460
+      height:500
   });
 
   heatMapCtx.canvas.toBuffer(function(err, buf){
@@ -36,4 +36,4 @@ img.onload = function(){
 
 }
 
-img.src = __dirname + '/ballon.jpg';
+img.src = __dirname + '/broadway_tower.jpg';

@@ -21,12 +21,11 @@ img.onload = function(){
   ctx.drawImage(img, 0, 0, width, height);
 
   var liquidScaling = new LiquidScaling(ctx);
-
   var heatMapCtx = liquidScaling.resize({
-      width:650,
-      height:500
+      width:550,
+      height:350
   });
-  console.log('Resized in %dms', new Date - start);
+
   heatMapCtx.canvas.toBuffer(function(err, buf){
   console.log(heatMapCtx);
     fs.writeFile(__dirname + '/scaled.jpg', buf, function(){

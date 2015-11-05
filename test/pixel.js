@@ -13,6 +13,23 @@ describe('Pixel', function() {
 
 	});
 
+    it('can be cloned', function() {
+
+        var pixel = new Pixel(10, 11, 12, 255);
+        var clone = pixel.clone();
+
+        expect(clone).to.be.instanceof(Pixel);
+        expect(clone).to.be.deep.equal(pixel);
+
+        var pixel = new Pixel(10, 11, 12, 255);
+        pixel.markAsDeleted();
+        var clone = pixel.clone();
+
+        expect(clone.isDeleted()).to.be.true;
+
+
+	});
+
     it('can get/set rgba ', function() {
 
         var r = 10;

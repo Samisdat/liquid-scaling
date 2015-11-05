@@ -26,7 +26,7 @@ img.onload = function(){
       width:650,
       height:500
   });
-
+  console.log('Resized in %dms', new Date - start);
   heatMapCtx.canvas.toBuffer(function(err, buf){
   console.log(heatMapCtx);
     fs.writeFile(__dirname + '/scaled.jpg', buf, function(){
